@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+sqlalchemy==1.4.52
+aiosqlite==0.20.0
+python-multipart==0.0.7
+ollama==0.4.0
