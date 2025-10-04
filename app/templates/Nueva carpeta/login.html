@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan AI - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="khan-logo">
+                    <span class="logo-k">K</span>
+                    <span class="logo-text">HAN</span>
+                </div>
+                <p class="logo-subtitle">v4.0 - El Mayordomo Cuántico</p>
+            </div>
+            
+            <form method="POST" action="/login" class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Ingresa tu usuario"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Ingresa tu contraseña"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                {% if error %}
+                <div class="error-message">
+                    <span>⚠️ {{ error }}</span>
+                </div>
+                {% endif %}
+                
+                <button type="submit" class="login-button">
+                    <span>Acceder</span>
+                    <span class="button-glow"></span>
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <p>Creado por <strong>zysus</strong></p>
+                <p class="hint">Credenciales por defecto: zysus / khan2025</p>
+            </div>
+        </div>
+        
+        <div class="background-animation">
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+</body>
+</html>

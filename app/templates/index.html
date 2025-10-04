@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan AI - Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="khan-logo-small">
+                    <span>K</span>
+                </div>
+                <h2>KHAN <span class="version">v4.0</span></h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="/index" class="nav-item active">
+                    <span class="icon">💬</span>
+                    <span>Chat</span>
+                </a>
+                <a href="/admin" class="nav-item">
+                    <span class="icon">⚙️</span>
+                    <span>Admin</span>
+                </a>
+                <a href="#" class="nav-item" onclick="toggleHistory()">
+                    <span class="icon">📜</span>
+                    <span>Historial</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name">{{ username }}</span>
+                </div>
+                <a href="/logout" class="logout-btn">Salir</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Khan AI Assistant</h1>
+                <div class="header-controls">
+                    <button class="mode-toggle" onclick="toggleMode()" id="modeBtn">
+                        <span id="modeIcon">🤖</span>
+                        <span id="modeText">Modo Normal</span>
+                    </button>
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span>Operacional</span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message system-message">
+                        <div class="message-content">
+                            <p>🧠 Khan v4.0 iniciado. ¿En qué puedo asistirte hoy?</p>
+                            <p class="message-hint">Soy tu mayordomo cuántico: sarcástico pero útil, serio cuando es necesario.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Input Area -->
+                <div class="chat-input-container">
+                    <form class="chat-input-form" onsubmit="sendMessage(event)">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            placeholder="Escribe tu mensaje a Khan..."
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="send-button">
+                            <span>Enviar</span>
+                        </button>
+                    </form>
+                    <div class="input-hints">
+                        <span class="hint-item">💡 Tip: Khan aprende de tus interacciones</span>
+                        <span class="hint-item">🎯 Usa palabras clave para cambiar su tono</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- History Sidebar (Hidden by default) -->
+        <aside class="history-sidebar" id="historySidebar">
+            <div class="history-header">
+                <h3>Historial</h3>
+                <button class="close-history" onclick="toggleHistory()">✕</button>
+            </div>
+            <div class="history-content" id="historyContent">
+                <p class="loading">Cargando historial...</p>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Feedback Modal -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <h3>¿Cómo fue mi respuesta?</h3>
+            <div class="rating-container">
+                <button class="rating-btn" onclick="submitFeedback(1)">1</button>
+                <button class="rating-btn" onclick="submitFeedback(2)">2</button>
+                <button class="rating-btn" onclick="submitFeedback(3)">3</button>
+                <button class="rating-btn" onclick="submitFeedback(4)">4</button>
+                <button class="rating-btn" onclick="submitFeedback(5)">5</button>
+                <button class="rating-btn" onclick="submitFeedback(6)">6</button>
+                <button class="rating-btn" onclick="submitFeedback(7)">7</button>
+                <button class="rating-btn" onclick="submitFeedback(8)">8</button>
+                <button class="rating-btn" onclick="submitFeedback(9)">9</button>
+                <button class="rating-btn" onclick="submitFeedback(10)">10</button>
+            </div>
+            <button class="modal-close" onclick="closeFeedbackModal()">Cerrar</button>
+        </div>
+    </div>
+    
+    <script src="/js/chat.js"></script>
+</body>
+</html>

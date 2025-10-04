@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan AI - Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="khan-logo-small">
+                    <span>K</span>
+                </div>
+                <h2>KHAN <span class="version">v4.0</span></h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="/index" class="nav-item">
+                    <span class="icon">💬</span>
+                    <span>Chat</span>
+                </a>
+                <a href="/admin" class="nav-item active">
+                    <span class="icon">⚙️</span>
+                    <span>Admin</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="/logout" class="logout-btn">Salir</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content admin-content">
+            <header class="content-header">
+                <h1>Panel de Administración</h1>
+            </header>
+            
+            <div class="admin-grid">
+                <!-- Status Card -->
+                <div class="admin-card">
+                    <h3>🔋 Estado del Sistema</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="label">Estado:</span>
+                            <span class="value" id="systemStatus">Operacional</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Versión:</span>
+                            <span class="value">4.0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Ollama:</span>
+                            <span class="value" id="ollamaStatus">Verificando...</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Interacciones:</span>
+                            <span class="value" id="interactionCount">0</span>
+                        </div>
+                    </div>
+                    <button class="refresh-btn" onclick="refreshStatus()">🔄 Actualizar</button>
+                </div>
+                
+                <!-- Personality Card -->
+                <div class="admin-card">
+                    <h3>🎭 Personalidad de Khan</h3>
+                    <div class="personality-traits">
+                        <div class="trait">
+                            <span>Filósofo</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <span>80%</span>
+                        </div>
+                        <div class="trait">
+                            <span>Troll</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <span>50%</span>
+                        </div>
+                        <div class="trait">
+                            <span>Estratega</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <span>60%</span>
+                        </div>
+                        <div class="trait">
+                            <span>Sarcasmo</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span>65%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quirks Card -->
+                <div class="admin-card">
+                    <h3>🧩 Quirks Activos</h3>
+                    <div class="quirks-list" id="quirksList">
+                        <p class="loading">Cargando quirks...</p>
+                    </div>
+                </div>
+                
+                <!-- Database Card -->
+                <div class="admin-card">
+                    <h3>🗄️ Base de Datos</h3>
+                    <div class="db-info">
+                        <p><strong>Ubicación:</strong> khan.db</p>
+                        <p><strong>Tablas:</strong> 4</p>
+                        <p class="info-text">quirks, logs, user_memory, voice_logs</p>
+                    </div>
+                    <button class="action-btn" onclick="cleanupDatabase()">🧹 Limpiar DB</button>
+                </div>
+                
+                <!-- Settings Card -->
+                <div class="admin-card full-width">
+                    <h3>⚙️ Configuración</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <label for="modoSerio">
+                                <input type="checkbox" id="modoSerio" onchange="toggleModoSerio()">
+                                Modo Serio Permanente
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label for="ollamaModel">Modelo Ollama:</label>
+                            <select id="ollamaModel" onchange="changeModel()">
+                                <option value="llama2">Llama 2</option>
+                                <option value="llama3">Llama 3</option>
+                                <option value="mistral">Mistral</option>
+                                <option value="codellama">Code Llama</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="sarcasmoLevel">Nivel de Sarcasmo:</label>
+                            <input type="range" id="sarcasmoLevel" min="0" max="100" value="65" onchange="updateSarcasmo()">
+                            <span id="sarcasmoValue">65%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Logs Card -->
+                <div class="admin-card full-width">
+                    <h3>📊 Últimas Interacciones</h3>
+                    <div class="logs-container" id="logsContainer">
+                        <p class="loading">Cargando logs...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/admin.js"></script>
+</body>
+</html>
